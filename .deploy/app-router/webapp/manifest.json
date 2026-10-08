@@ -1,14 +1,25 @@
 {
   "_version": "1.65.0",
+
   "sap.app": {
     "id": "za.co.yes.programme.hub",
     "type": "application",
-    "i18n": "i18n/i18n.properties",
+
+    "i18n": {
+      "bundleUrl": "i18n/i18n.properties",
+      "supportedLocales": [
+        ""
+      ],
+      "fallbackLocale": ""
+    },
+
     "applicationVersion": {
       "version": "1.0.0"
     },
+
     "title": "{{appTitle}}",
     "description": "{{appDescription}}",
+
     "dataSources": {
       "mainService": {
         "uri": "/odata/v4/yesprogramme/",
@@ -23,6 +34,7 @@
 
   "sap.ui": {
     "technology": "UI5",
+
     "deviceTypes": {
       "desktop": true,
       "tablet": true,
@@ -31,13 +43,14 @@
   },
 
   "sap.ui5": {
-    "flexEnabled": true,
+    "flexEnabled": false,
 
     "dependencies": {
       "minUI5Version": "1.141.0",
+
       "libs": {
-        "sap.m": {},
         "sap.ui.core": {},
+        "sap.m": {},
         "sap.fe.templates": {}
       }
     },
@@ -45,12 +58,19 @@
     "models": {
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
-        "uri": "i18n/i18n.properties"
+        "uri": "i18n/i18n.properties",
+        "settings": {
+          "supportedLocales": [
+            ""
+          ],
+          "fallbackLocale": ""
+        }
       },
 
       "": {
         "dataSource": "mainService",
         "preload": true,
+
         "settings": {
           "operationMode": "Server",
           "autoExpandSelect": true,
@@ -60,14 +80,13 @@
     },
 
     "routing": {
-      "config": {},
-
       "routes": [
         {
           "pattern": ":?query:",
           "name": "YouthList",
           "target": "YouthList"
         },
+
         {
           "pattern": "Youth({key}):?query:",
           "name": "YouthObjectPage",
@@ -80,6 +99,7 @@
           "type": "Component",
           "id": "YouthList",
           "name": "sap.fe.templates.ListReport",
+
           "options": {
             "settings": {
               "contextPath": "/Youth",
@@ -91,14 +111,6 @@
                     "route": "YouthObjectPage"
                   }
                 }
-              },
-
-              "controlConfiguration": {
-                "@com.sap.vocabularies.UI.v1.LineItem": {
-                  "tableSettings": {
-                    "type": "ResponsiveTable"
-                  }
-                }
               }
             }
           }
@@ -108,6 +120,7 @@
           "type": "Component",
           "id": "YouthObjectPage",
           "name": "sap.fe.templates.ObjectPage",
+
           "options": {
             "settings": {
               "contextPath": "/Youth"
@@ -115,6 +128,11 @@
           }
         }
       }
+    },
+
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
     }
   },
 
