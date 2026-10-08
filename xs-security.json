@@ -1,0 +1,31 @@
+{
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.YES_Admin",
+      "description": "YES_Admin"
+    },
+    {
+      "name": "$XSAPPNAME.YES_Supervisor",
+      "description": "YES_Supervisor"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "YES_Admin",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.YES_Admin"
+      ],
+      "attribute-references": []
+    },
+    {
+      "name": "YES_Supervisor",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.YES_Supervisor"
+      ],
+      "attribute-references": []
+    }
+  ]
+}
