@@ -1,0 +1,129 @@
+{
+  "_version": "1.65.0",
+  "sap.app": {
+    "id": "za.co.yes.programme.hub",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "1.0.0"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "dataSources": {
+      "mainService": {
+        "uri": "/odata/v4/yesprogramme/",
+        "type": "OData",
+        "settings": {
+          "odataVersion": "4.0",
+          "earlyRequests": true
+        }
+      }
+    }
+  },
+
+  "sap.ui": {
+    "technology": "UI5",
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+
+  "sap.ui5": {
+    "flexEnabled": true,
+
+    "dependencies": {
+      "minUI5Version": "1.141.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "uri": "i18n/i18n.properties"
+      },
+
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      }
+    },
+
+    "routing": {
+      "config": {},
+
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "YouthList",
+          "target": "YouthList"
+        },
+        {
+          "pattern": "Youth({key}):?query:",
+          "name": "YouthObjectPage",
+          "target": "YouthObjectPage"
+        }
+      ],
+
+      "targets": {
+        "YouthList": {
+          "type": "Component",
+          "id": "YouthList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/Youth",
+              "variantManagement": "Page",
+
+              "navigation": {
+                "Youth": {
+                  "detail": {
+                    "route": "YouthObjectPage"
+                  }
+                }
+              },
+
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+
+        "YouthObjectPage": {
+          "type": "Component",
+          "id": "YouthObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "contextPath": "/Youth"
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+
+  "sap.cloud": {
+    "public": true
+  }
+}

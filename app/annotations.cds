@@ -19,12 +19,12 @@ annotate service.Youth with @(
             { 
                 Value: Status, 
                 Label: 'Status',
-                Criticality: 3 // color-codes the status indicator
+                Criticality: #Positive // color-codes the status indicator
             },
             { 
                 Value: isHighRisk, 
                 Label: 'High Risk Alert',
-                Criticality: 1 // marks risk as red/negative if true
+                Criticality: #Negative // marks risk as red/negative if true
             }
         ],
 
