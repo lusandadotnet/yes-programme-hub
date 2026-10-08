@@ -7,6 +7,16 @@
 
     <title>YES Programme Hub</title>
 
+    <style>
+        html,
+        body,
+        body > div,
+        #container {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+
     <script
         id="sap-ui-bootstrap"
         src="https://ui5.sap.com/1.152.0/resources/sap-ui-core.js"
@@ -19,12 +29,14 @@
     </script>
 </head>
 
-<body class="sapUiBody sapUiSizeCompact">
+<body class="sapUiBody sapUiSizeCompact" id="content">
     <div
         data-sap-ui-component
         data-name="za.co.yes.programme.hub"
         data-id="container"
-        data-settings='{"id":"yes-programme-hub"}'>
+        data-height="100%"
+        data-settings='{"id":"yes-programme-hub"}'
+        style="height: 100%;">
     </div>
 </body>
 </html>
